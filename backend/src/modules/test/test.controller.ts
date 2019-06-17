@@ -1,12 +1,14 @@
-import { Controller, Get } from '@nestjs/common';
-import { UsersService } from '../users/users.service';
+import { Controller, Get, UseGuards, Req } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
+import { Request } from 'express';
 
 @Controller('api/v1/test')
 export class TestController {
-  constructor(private service: UsersService){}
+  constructor(){};
 
   @Get()
-  public test(){
-    return this.service.login();
+  @UseGuards(AuthGuard())
+  public fetchOne(@Req() request: Request): Object{
+    return request.user;
   }
 }

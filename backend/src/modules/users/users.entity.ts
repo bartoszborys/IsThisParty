@@ -5,9 +5,12 @@ export class Users {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column('char', {length: 255})
-  login: string;
+  @Column('char', {length: 255, nullable: false, unique: true} )
+  email: string;
 
-  @Column('char', {length: 255})
+  @Column('char', {length: 255, nullable: false})
   password: string;
+
+  @Column('char', {length: 255, nullable: false})
+  salt: string;
 }
