@@ -2,7 +2,7 @@ import { Controller, Post, Body, BadRequestException, HttpCode } from '@nestjs/c
 import { AuthService } from './auth.service';
 import { Credentials } from './dto/credentials.dto';
 import { Observable } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { InsertResult } from 'typeorm';
 
 @Controller('api/v1/auth')

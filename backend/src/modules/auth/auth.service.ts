@@ -1,5 +1,5 @@
 import { JwtService } from '@nestjs/jwt';
-import { Injectable, NotAcceptableException, InternalServerErrorException, HttpException, BadRequestException } from '@nestjs/common';
+import { Injectable, NotAcceptableException, BadRequestException } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { Observable } from 'rxjs';
 import { Credentials } from './dto/credentials.dto';
