@@ -1,0 +1,40 @@
+:host{
+  background-color: lightgoldenrodyellow;
+  background-color: inherit;
+  overflow-y: auto;
+  display: block;
+  flex: 1;
+}
+
+.party{
+  display: flex;
+  flex-flow: row wrap;
+  margin: 1.5em;
+  flex-basis: 90%;
+}
+
+.party__element{
+  transition: transform 0.3s ease-in-out;
+  border-radius: 0.5rem;
+  max-height: 24rem;
+  max-width: 24rem;
+  overflow: hidden;
+  cursor: pointer;
+  flex-grow: 1;
+  width: 18rem;
+  margin: 1em;
+}
+
+.party__element:hover{
+  z-index: 9999;
+  transform: scale(1.2);
+}
+
+.party__element-content{
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.party__element-content:hover{
+  overflow: hidden auto;
+}

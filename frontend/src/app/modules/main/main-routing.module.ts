@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from './main.component';
-import { TestViewComponent } from './components/test-view/test-view.component';
 import { AuthGuard } from 'src/guards/auth.guard';
+import { PartyListComponent } from './components/party-list/party-list.component';
+import { PartyComponent } from './components/party/party.component';
+import { MainInfoComponent } from './components/main-info/main-info.component';
 
 const routes: Routes = [
   {
@@ -11,8 +13,16 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {
-        path: 'test',
-        component: TestViewComponent
+        path: '',
+        component: MainInfoComponent
+      },
+      {
+        path: 'parties',
+        component: PartyListComponent
+      },
+      {
+        path: 'parties/:id',
+        component: PartyComponent
       }
     ]
   },
