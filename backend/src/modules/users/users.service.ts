@@ -14,6 +14,6 @@ export class UsersService {
   }
 
   public getOne(conditions: FindConditions<Users>): Observable<Users>{
-    return from( this.users.findOneOrFail({where: conditions}) );
+    return from( this.users.findOne({where: conditions}) );
   }
 }

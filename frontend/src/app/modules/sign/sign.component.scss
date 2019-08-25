@@ -1,0 +1,23 @@
+:host{
+  flex: 1;
+  display: flex;
+  overflow-y: auto; 
+  flex-direction: column;
+  background: url('/assets/hands.jpg') no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+.sign{
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.sign__wrapper{
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFFDD!important;
+  margin: 1em 0;
+}

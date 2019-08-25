@@ -1,0 +1,26 @@
+<article class="d-flex flex-column flex-fill">
+  <section class="mx-auto my-2 p-4">
+    <h3 class="text-secondary mx-auto text-center">🎉 ThisIsParty 🎉</h3>
+    <form #form autocomplete="off" (change)="form.reportValidity()" (ngSubmit)="signUp(form)" class="m-3">
+      <p>
+        <label>📧 Email</label>
+        <input required [(ngModel)]="details.email" name="email" pattern="[a-zA-Z][a-zA-Z1-9]*@[a-zA-Z]+\.[a-zA-Z]+" type="email" class="form-control" placeholder="Enter email" size="32"/>
+      </p>
+      <p>
+        <label>📝 Password</label>
+        <input required minlength="6" [(ngModel)]="details.password" name="password" type="password" class="form-control" placeholder="Password">
+      </p>
+      <p>
+        <label>✔ Confirm Password</label>
+        <input [class.invalid-repeat]="!passwordsMatch()" required minlength="6" [(ngModel)]="details.repeat" name="repeat" type="password" class="form-control" placeholder="Repeat password">
+      </p>
+      <p class="d-flex flex-column">
+        <button type="submit" class="btn btn-outline-primary m-2 px-4">Sign up</button>
+        <button type="reset" class="btn btn-outline-primary m-2 px-4">Reset</button>
+      </p>
+      <nav class="d-flex flex-column">
+        <a routerLink="../" routerLinkActive="active">Already registered?</a>
+      </nav>
+    </form>
+  </section>
+</article>

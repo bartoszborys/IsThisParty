@@ -1,8 +1,8 @@
-import { Controller, Post, Body, BadRequestException, HttpCode } from '@nestjs/common';
+import { Controller, Post, Body, BadRequestException, HttpCode, Get } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { Credentials } from './dto/credentials.dto';
 import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { InsertResult } from 'typeorm';
 
 @Controller('api/v1/auth')
@@ -11,8 +11,12 @@ export class AuthController {
   
   @Post('signIn')
   @HttpCode(200)
-  public signIn(@Body() credentials: Credentials): Observable<string>{
-    return this.authService.signIn(credentials);
+  public signIn(@Body() credentials: Credentials): Observable<any>{
+    return this.authService.signIn(credentials).pipe<string | any>(
+      map((value)=> { return {token: value} })
+    ).pipe(
+      catchError( err => { throw err })
+    );
   }
 
   @Post('signUp')

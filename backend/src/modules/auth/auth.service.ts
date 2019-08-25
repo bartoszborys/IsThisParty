@@ -6,7 +6,7 @@ import { Credentials } from './dto/credentials.dto';
 import * as bcrypt from 'bcrypt';
 import { SaltedCredentials } from './lib/salted.credentials.model';
 import { InsertResult } from 'typeorm';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { Users } from '../users/users.entity';
 
 @Injectable()
@@ -15,15 +15,15 @@ export class AuthService {
 
   public signIn(credentials: Credentials): Observable<string> {
     if(!credentials.email || !credentials.password){
-      throw new BadRequestException();
+      throw new BadRequestException("Email or password empty");
     };
 
     return this.usersService.getOne({email: credentials.email}).pipe<string>(
       map( (user: Users) => {
-        if( bcrypt.compareSync(credentials.password, user.password) ){
+        if( user != null && bcrypt.compareSync(credentials.password, user.password) ){
           return this.jwtService.sign({id: user.id});
         }else{
-          throw new NotAcceptableException();
+          throw new NotAcceptableException("Email or password incorrect.");
         };
       })
     );

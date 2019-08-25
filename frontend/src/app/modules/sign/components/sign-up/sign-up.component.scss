@@ -1,0 +1,23 @@
+:host{
+  flex: 1;
+  display: flex;
+}
+
+.error{
+  display: block;
+  word-wrap: break-word;
+  height: 1em;
+  transition: all 1s linear;
+}
+
+.error-animation{
+  transition: opacity 300ms ease-in-out;
+}
+
+.form-control.ng-valid{
+  color: green;
+}
+
+.form-control.ng-invalid, .form-control.invalid-repeat{
+  color: crimson;
+}

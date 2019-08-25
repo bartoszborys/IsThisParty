@@ -8,12 +8,11 @@ import { AuthService } from 'src/services/auth.service';
 })
 export class AuthGuard implements CanActivate {
   constructor(private service: AuthService) {}
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    return true;
     const isLogged = this.service.isLogged();
     if(!isLogged){
-      this.service.redirectToSign();
+      this.service.redirectToAuth();
     }
     return isLogged;
   }
