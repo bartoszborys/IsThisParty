@@ -1,4 +1,25 @@
-<p>{{partyData.id}}</p>
-<img [src]="partyData.img" style="height: 200px"/>
-<p>{{partyData.title}}</p>
-<p>{{partyData.description}}</p>
+<article *ngIf="partyData$ | async as partyData; else loading" class="party">
+  <figure class="party__image-wrapper">
+    <img class="party__image" [src]="partyData.img"/>
+  </figure>
+  <section class="d-flex flex-column flex-fill">
+    <span class="wrapper">
+      <h5 class="header">{{partyData.title}}</h5>
+    </span>
+    <nav> 
+      <a class="btn btn-primary" routerLink="./">Info</a>
+      <a class="btn btn-primary" routerLink="./participants">Participants</a>
+      <a class="btn btn-primary" routerLink="./stuff">Party stuff</a>
+      <a class="btn btn-primary" routerLink="./vote">Voting</a>
+      <a class="btn btn-primary" routerLink="./comments">Comments</a>
+    </nav>
+    <div class="content d-flex flex-column flex-fill">
+      <router-outlet></router-outlet>
+    </div>
+  </section>
+</article>
+<ng-template #loading>
+  <div class="loader loader--fill">
+    <div appSpinner="gray"></div>
+  </div>
+</ng-template>

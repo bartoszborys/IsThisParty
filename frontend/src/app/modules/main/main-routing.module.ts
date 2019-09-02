@@ -5,6 +5,11 @@ import { AuthGuard } from 'src/guards/auth.guard';
 import { PartyListComponent } from './components/party-list/party-list.component';
 import { PartyComponent } from './components/party/party.component';
 import { MainInfoComponent } from './components/main-info/main-info.component';
+import { PartyInfoComponent } from './components/party/components/party-info/party-info.component';
+import { PartyParticipantsComponent } from './components/party/components/party-participants/party-participants.component';
+import { PartyStuffComponent } from './components/party/components/party-stuff/party-stuff.component';
+import { PartyCommentsComponent } from './components/party/components/party-comments/party-comments.component';
+import { PartyVoteComponent } from './components/party/components/party-vote/party-vote.component';
 
 const routes: Routes = [
   {
@@ -22,7 +27,29 @@ const routes: Routes = [
       },
       {
         path: 'parties/:id',
-        component: PartyComponent
+        component: PartyComponent,
+        children: [
+          {
+            path: '',
+            component: PartyInfoComponent
+          },
+          {
+            path: 'participants',
+            component: PartyParticipantsComponent
+          },
+          {
+            path: 'stuff',
+            component: PartyStuffComponent
+          },
+          {
+            path: 'vote',
+            component: PartyVoteComponent
+          },
+          {
+            path: 'comments',
+            component: PartyCommentsComponent
+          }
+        ]
       }
     ]
   },

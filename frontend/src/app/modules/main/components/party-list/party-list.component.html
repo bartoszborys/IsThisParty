@@ -1,5 +1,5 @@
 <article class="party">
-  <div *ngFor="let data of mockData" class="party__element card shadow-lg" [routerLink]="['/parties', data.id]" >
+  <div *ngFor="let data of (mockData | async)" class="party__element card shadow-lg" [routerLink]="['/parties', data.id]" >
     <img  class="card-img-top" [src]="data.img"/>
     <div class="party__element-content card-body">
       <h5 class="card-title">{{data.title}}</h5>

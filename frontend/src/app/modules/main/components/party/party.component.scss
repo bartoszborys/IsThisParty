@@ -1,3 +1,49 @@
 :host{
-  margin: 1rem;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.party{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.party__image-wrapper{
+  margin: 0;
+  height: 150px;
+  overflow: hidden;
+}
+
+.party__image{
+  position: relative;
+  width: 100%;
+}
+
+.party-padding{
+  padding: 0.6rem; 
+}
+
+.content {
+  @extend .party-padding;
+}
+
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.header {
+  @extend .party-padding;
+  margin: 0;
+  opacity: 0.8;
+  background-color: bisque;
+  border-top-right-radius: 0.8rem;
+}
+
+.loader__spinner{
+  transform: scale(1.4);
 }
