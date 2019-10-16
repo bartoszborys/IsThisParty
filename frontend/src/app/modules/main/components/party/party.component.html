@@ -3,16 +3,16 @@
     <img class="party__image" [src]="partyData.img"/>
   </figure>
   <section class="d-flex flex-column flex-fill">
+    <nav class="d-flex flex-wrap"> 
+      <a class="btn btn-primary flex-fill" routerLink="./">Info</a>
+      <a class="btn btn-primary flex-fill" routerLink="./participants">Participants</a>
+      <a class="btn btn-primary flex-fill" routerLink="./stuff">Party stuff</a>
+      <a class="btn btn-primary flex-fill" routerLink="./vote">Voting</a>
+      <a class="btn btn-primary flex-fill" routerLink="./comments">Comments</a>
+    </nav>
     <span class="wrapper">
       <h5 class="header">{{partyData.title}}</h5>
     </span>
-    <nav> 
-      <a class="btn btn-primary" routerLink="./">Info</a>
-      <a class="btn btn-primary" routerLink="./participants">Participants</a>
-      <a class="btn btn-primary" routerLink="./stuff">Party stuff</a>
-      <a class="btn btn-primary" routerLink="./vote">Voting</a>
-      <a class="btn btn-primary" routerLink="./comments">Comments</a>
-    </nav>
     <div class="content d-flex flex-column flex-fill">
       <router-outlet></router-outlet>
     </div>

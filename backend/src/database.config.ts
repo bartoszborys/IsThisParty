@@ -7,6 +7,9 @@ export const dbConfig: TypeOrmModule = {
     username: "client",
     password: "123456",
     database: "isthisparty",
-    entities: ["src/**/*.entity.ts"],
+    entities: [
+      "src/**/*.entity.ts",
+      "src/**/*.entity.js"
+    ],
     synchronize: true
 }

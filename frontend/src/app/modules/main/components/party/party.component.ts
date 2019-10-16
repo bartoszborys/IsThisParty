@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PartiesService } from './services/parties/parties.service';
+import { PartiesService } from '../../services/parties/parties.service';
+import { Observable } from 'rxjs';
+import { PartyService } from './services/party/party.service';
 
 @Component({
   selector: 'app-party',
@@ -8,15 +10,16 @@ import { PartiesService } from './services/parties/parties.service';
   styleUrls: ['./party.component.scss']
 })
 export class PartyComponent implements OnInit {
-  public partyData$: any;
+  public partyData$: Observable<any>;
 
   constructor(
     private router: ActivatedRoute,
-    private service: PartiesService
+    private party: PartyService,
+    private parties: PartiesService
   ) {}
 
   ngOnInit() {
-    this.service.setCurrentPartyId(this.router);
-    this.partyData$ = this.service.getCurrentParty();
+    this.parties.setCurrentPartyId(this.router);
+    this.partyData$ = this.party.getCurrentParty();
   }
 }

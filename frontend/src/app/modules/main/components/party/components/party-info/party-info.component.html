@@ -1,2 +1,22 @@
-<p>party-info works!</p>
-<h1>Wat: {{(currentParty | async)?.description}}</h1>
+<article>
+  <section class="tag-wrapper">
+    <div class="tag" *ngFor="let mainTag of (mainTags$ | async)">
+      <span class="tag__main-label">{{mainTag.description}}</span>
+      <span class="tag__main-value">{{mainTag.value}}</span>
+    </div>
+  </section>
+  <section class="d-flex flex-column">
+    <h4 style="background: bisque;" class="px-2">Tags</h4>
+    <div class="tag-wrapper">
+      <div class="tag" *ngFor="let additionalTag of (additionalTags$ | async)">
+        <span>{{additionalTag.icon}}</span>
+        <span>{{additionalTag.description}}</span>
+        <span *ngIf="additionalTag?.counting">[{{additionalTag?.counting}}]</span>
+      </div>
+    </div>
+  </section>
+  <section class="d-flex flex-column">
+    <h4 style="background: bisque;" class="px-2">Description</h4>
+    <div class="m-3">{{(current$ | async)?.description}}</div>
+  </section>
+</article>

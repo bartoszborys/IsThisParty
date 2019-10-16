@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PartiesService } from '../party/services/parties/parties.service';
+import { PartiesService } from '../../services/parties/parties.service';
 import { Observable } from 'rxjs';
 
 @Component({

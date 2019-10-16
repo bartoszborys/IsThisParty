@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { PartiesService } from '../../../services/parties/parties.service';
+import { PartyService } from '../../services/party/party.service';
+import { PartyDetails } from '../../models/party-details.model';
+import { Observable } from 'rxjs/internal/Observable';
+import { PartyInfoService } from '../../services/party-info/party-info.service';
+import { PartyTagData } from '../../models/party-tag-data.model';
+import { PartyAdditionalTagData } from '../../models/party-additional-tag-data.model';
 
 @Component({
   selector: 'app-party-info',
@@ -7,11 +12,18 @@ import { PartiesService } from '../../../services/parties/parties.service';
   styleUrls: ['./party-info.component.scss']
 })
 export class PartyInfoComponent implements OnInit {
-  public currentParty: any;
-  constructor(private service: PartiesService) { }
+  public current$: Observable<PartyDetails>;
+  public mainTags$: Observable<PartyTagData[]>;
+  public additionalTags$: Observable<PartyAdditionalTagData[]>;
+
+  constructor(
+    private partyService: PartyService,
+    private partyInfoService: PartyInfoService
+  ) { }
 
   ngOnInit() {
-    this.currentParty = this.service.getCurrentParty();
+    this.current$ = this.partyService.getCurrentParty();
+    this.mainTags$ = this.partyInfoService.getMainTags();
+    this.additionalTags$ = this.partyInfoService.getAdditionalTags();
   }
-
 }

@@ -3,11 +3,11 @@ import { Injectable, NotAcceptableException, BadRequestException } from '@nestjs
 import { UsersService } from '../users/users.service';
 import { Observable } from 'rxjs';
 import { Credentials } from './dto/credentials.dto';
-import * as bcrypt from 'bcrypt';
 import { SaltedCredentials } from './lib/salted.credentials.model';
 import { InsertResult } from 'typeorm';
 import { map, catchError } from 'rxjs/operators';
 import { Users } from '../users/users.entity';
+import * as bcrypt from 'bcryptjs';
 
 @Injectable()
 export class AuthService {
