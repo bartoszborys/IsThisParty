@@ -31,22 +31,22 @@ export class PartyInfoService {
     {
       icon: "🍔",
       description: "Self food",
-      counting: null
+      remain: null
     },
     {
       icon: "📌",
       description: "Self Alcohol",
-      counting: null
+      remain: null
     },
     {
       icon: "🛏",
       description: "Sleep",
-      counting: "4"
+      remain: "4"
     },
     {
       icon: "🚗",
       description: "Transport",
-      counting: "5"
+      remain: "5"
     },
   ];
 
