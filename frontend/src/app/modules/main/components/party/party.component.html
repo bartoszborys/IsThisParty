@@ -3,12 +3,19 @@
     <img class="party__image" [src]="partyData.img"/>
   </figure>
   <section class="d-flex flex-column flex-fill">
-    <nav class="d-flex flex-wrap"> 
-      <a class="btn btn-primary flex-fill" routerLink="./">Info</a>
-      <a class="btn btn-primary flex-fill" routerLink="./participants">Participants</a>
-      <a class="btn btn-primary flex-fill" routerLink="./stuff">Party stuff</a>
-      <a class="btn btn-primary flex-fill" routerLink="./vote">Voting</a>
-      <a class="btn btn-primary flex-fill" routerLink="./comments">Comments</a>
+    <nav class="d-flex flex-wrap btn-group btn-group-toggle" data-toggle="buttons">
+      <label class="btn d-none"></label> 
+      <label 
+        *ngFor="let button of navigationButtons"
+        class="btn btn-dark flex-fill" 
+        style="cursor: pointer;"
+        [class.active]="button.activated"
+        routerLink="./{{button.routerLink}}"
+        (click)="markActivatedRoute(button.routerLink)" 
+      >
+        <input type="radio"/>{{button.name}}
+      </label>
+      <label class="btn d-none"></label>
     </nav>
     <span class="wrapper">
       <h5 class="header">{{partyData.title}}</h5>
