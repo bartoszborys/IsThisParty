@@ -2,25 +2,25 @@
   <figure class="party__image-wrapper">
     <img class="party__image" [src]="partyData.img"/>
   </figure>
-  <section class="d-flex flex-column flex-fill">
+  <section class="party__contetnt-wrapper d-flex flex-column flex-fill">
     <nav class="d-flex flex-wrap btn-group btn-group-toggle" data-toggle="buttons">
       <label class="btn d-none"></label> 
-      <label 
+      <a 
         *ngFor="let button of navigationButtons"
         class="btn btn-dark flex-fill" 
         style="cursor: pointer;"
-        [class.active]="button.activated"
         routerLink="./{{button.routerLink}}"
-        (click)="markActivatedRoute(button.routerLink)" 
+        [routerLinkActiveOptions]="{exact: true}"
+        routerLinkActive="active"
       >
         <input type="radio"/>{{button.name}}
-      </label>
+      </a>
       <label class="btn d-none"></label>
     </nav>
-    <span class="wrapper">
+    <header class="wrapper">
       <h5 class="header">{{partyData.title}}</h5>
-    </span>
-    <div class="content d-flex flex-column flex-fill">
+    </header>
+    <div class="party__content">
       <router-outlet></router-outlet>
     </div>
   </section>

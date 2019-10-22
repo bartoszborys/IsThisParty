@@ -1,3 +1,9 @@
+:host{
+  flex-direction: column;
+  display: flex;
+  min-height: 0;
+}
+
 .tag-wrapper{
   display: flex;
   flex-wrap: wrap;
