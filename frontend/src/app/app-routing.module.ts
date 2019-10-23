@@ -8,10 +8,7 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    loadChildren: () => import('./modules/sign/sign.module').then(mod => {
-      console.log(mod);
-      return mod.SignModule;
-    })
+    loadChildren: () => import('./modules/sign/sign.module').then(mod => mod.SignModule)
   }
 ];
 
